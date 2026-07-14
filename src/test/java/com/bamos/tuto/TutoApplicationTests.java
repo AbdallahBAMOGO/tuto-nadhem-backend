@@ -1,5 +1,6 @@
 package com.bamos.tuto;
 
+import com.bamos.tuto.model.Categorie;
 import com.bamos.tuto.model.Produit;
 import com.bamos.tuto.repos.ProduitRepository;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class TutoApplicationTests {
 
     @Test
     public void testCreateProduit(){
-        Produit prod = new Produit("Pc Dell", 123.32, new Date());
+        Produit prod = new Produit("iphone x", 453.32, new Date());
         produitRepository.save(prod);
     }
 
@@ -52,6 +53,73 @@ class TutoApplicationTests {
         List<Produit> produitList = produitRepository.findAll();
 
         for (Produit p: produitList){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomProduit(){
+        List<Produit> prods = produitRepository.findByNomProduit("iphone x");
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomProduitContains(){
+        List<Produit> prods = produitRepository.findByNomProduitContains("iphone x");
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomPrix(){
+        List<Produit> prods = produitRepository.findByNomPrix("iphone x",453.32);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomPrixOther(){
+        List<Produit> prods = produitRepository.findByNomPrixOther("iphone x",453.32);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByCategorie(){
+        Categorie cat = new Categorie();
+        cat.setIdCat(1L);
+
+        List<Produit> prods = produitRepository.findByCategorie(cat);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByCategorieIdCat(){
+        List<Produit> prods = produitRepository.findByCategorieIdCat(1L);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByOrderByNomProduitAsc(){
+        List<Produit> prods = produitRepository.findByOrderByNomProduitAsc();
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testTrierProduitsNomsPrix(){
+        List<Produit> prods = produitRepository.trierProduitsNomsPrix();
+        for (Produit p : prods){
             System.out.println(p);
         }
     }
