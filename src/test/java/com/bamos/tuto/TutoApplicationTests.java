@@ -1,5 +1,6 @@
 package com.bamos.tuto;
 
+import com.bamos.tuto.model.Categorie;
 import com.bamos.tuto.model.Produit;
 import com.bamos.tuto.repos.ProduitRepository;
 import org.junit.jupiter.api.Test;
@@ -67,6 +68,25 @@ class TutoApplicationTests {
     @Test
     public void testFindByNomProduitContains(){
         List<Produit> prods = produitRepository.findByNomProduitContains("iphone x");
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByCategorie(){
+        Categorie cat = new Categorie();
+        cat.setIdCat(1L);
+
+        List<Produit> prods = produitRepository.findByCategorie(cat);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByCategorieIdCat(){
+        List<Produit> prods = produitRepository.findByCategorieIdCat(1L);
         for (Produit p : prods){
             System.out.println(p);
         }

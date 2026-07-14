@@ -1,7 +1,9 @@
 package com.bamos.tuto.repos;
 
+import com.bamos.tuto.model.Categorie;
 import com.bamos.tuto.model.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -10,4 +12,9 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List<Produit> findByNomProduit(String nom);
 
     List<Produit> findByNomProduitContains(String nom);
+
+    @Query("select p from Produit p where p.categorie = ?1")
+    List<Produit> findByCategorie(Categorie categorie);
+
+    List<Produit> findByCategorieIdCat(Long id);
 }
