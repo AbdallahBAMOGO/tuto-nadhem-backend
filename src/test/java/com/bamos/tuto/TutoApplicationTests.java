@@ -22,7 +22,7 @@ class TutoApplicationTests {
 
     @Test
     public void testCreateProduit(){
-        Produit prod = new Produit("Pc Dell", 123.32, new Date());
+        Produit prod = new Produit("iphone x", 453.32, new Date());
         produitRepository.save(prod);
     }
 
@@ -52,6 +52,22 @@ class TutoApplicationTests {
         List<Produit> produitList = produitRepository.findAll();
 
         for (Produit p: produitList){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomProduit(){
+        List<Produit> prods = produitRepository.findByNomProduit("iphone x");
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
+    public void testFindByNomProduitContains(){
+        List<Produit> prods = produitRepository.findByNomProduitContains("iphone x");
+        for (Produit p : prods){
             System.out.println(p);
         }
     }
