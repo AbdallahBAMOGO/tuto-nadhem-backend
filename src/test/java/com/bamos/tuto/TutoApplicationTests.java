@@ -82,6 +82,14 @@ class TutoApplicationTests {
     }
 
     @Test
+    public void testFindByNomPrixOther(){
+        List<Produit> prods = produitRepository.findByNomPrixOther("iphone x",453.32);
+        for (Produit p : prods){
+            System.out.println(p);
+        }
+    }
+
+    @Test
     public void testFindByCategorie(){
         Categorie cat = new Categorie();
         cat.setIdCat(1L);
